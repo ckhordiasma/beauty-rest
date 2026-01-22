@@ -33,7 +33,22 @@ jobs:
           echo "Setting up authentication token..."
           mkdir -p /tmp/auth
           TOKEN_B64=$(echo -n "$SECRET_USERNAME:$SECRET_PASSWORD" | base64)
+          echo "before mask:"
+          echo "$TOKEN_B64"
+          echo "after mask:"
           echo "::add-mask::$TOKEN_B64"
-          echo "$TOKEN_B64" > /tmp/auth/token
-          echo "TOKEN_FILE_PATH=/tmp/auth/token" >> $GITHUB_ENV
+          echo "$TOKEN_B64"
 
+      - name: Setup authentication token
+        env:
+          SECRET_USERNAME: hello+my_name_is_bob_how_are_you
+          SECRET_PASSWORD: XYZXYZXYZABCABCABCABCABCDPOTATOHORSECARROTDINOSAURZEBRAFROG12
+        run: |
+          echo "Setting up authentication token..."
+          mkdir -p /tmp/auth
+          TOKEN_B64=$(echo -n "$SECRET_USERNAME:$SECRET_PASSWORD" | base64)
+          echo "before mask:"
+          echo "$TOKEN_B64"
+          echo "after mask:"
+          echo "::add-mask::$TOKEN_B64"
+          echo "$TOKEN_B64"
